@@ -7,17 +7,38 @@ import { useStateValue } from "../context/StateProvider";
 import { actionType } from "../context/reducer";
 import EmptyCart from "../img/emptyCart.svg";
 import CartItem from "./CartItem";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { app } from "../firebase.config";
+import {Link} from "react-router-dom";
 
 const CartContainer = () => {
   const [{ cartShow, cartItems, user }, dispatch] = useStateValue();
   const [flag, setFlag] = useState(1);
   const [tot, setTot] = useState(0);
+  const firebaseAuth = getAuth(app);
+  const provider = new GoogleAuthProvider();
+  const [isMenu, setIsMenu] = useState(false);
 
   const showCart = () => {
     dispatch({
       type: actionType.SET_CART_SHOW,
       cartShow: !cartShow,
     });
+  };
+
+  const login = async () => {
+    if (!user) {
+      const {
+        user: { refreshToken, providerData },
+      } = await signInWithPopup(firebaseAuth, provider);
+      dispatch({
+        type: actionType.SET_USER,
+        user: providerData[0],
+      });
+      localStorage.setItem("user", JSON.stringify(providerData[0]));
+    } else {
+      setIsMenu(!isMenu);
+    }
   };
 
   useEffect(() => {
@@ -98,18 +119,28 @@ const CartContainer = () => {
             </div>
 
             {user ? (
-              <motion.button
-                whileTap={{ scale: 0.8 }}
-                type="button"
-                className="w-full p-2 rounded-full bg-gradient-to-tr from-orange-400 to-orange-600 text-gray-50 text-lg my-2 hover:shadow-lg"
-              >
-                Check Out
-              </motion.button>
+              <div className="flex flex-wrap gap-2">
+                <motion.button
+                    whileTap={{ scale: 0.8 }}
+                    type="button"
+                    className="w-full p-2 rounded-full bg-gradient-to-tr from-blue-400 to-blue-600 text-gray-50 text-lg my-1 hover:shadow-lg"
+                >
+                  Check Out
+                </motion.button>
+                <motion.button
+                    whileTap={{ scale: 0.8 }}
+                    type="button"
+                    className="w-full p-2 rounded-full bg-gradient-to-tr from-blue-400 to-blue-600 text-gray-50 text-lg mx-1 hover:shadow-lg"
+                >
+                  <Link to="/"> Continue Shopping </Link>
+                </motion.button>
+              </div>
             ) : (
               <motion.button
                 whileTap={{ scale: 0.8 }}
                 type="button"
-                className="w-full p-2 rounded-full bg-gradient-to-tr from-orange-400 to-orange-600 text-gray-50 text-lg my-2 hover:shadow-lg"
+                onClick={login}
+                className="w-full p-2 rounded-full bg-gradient-to-tr from-blue-400 to-blue-600 text-gray-50 text-lg my-2 hover:shadow-lg"
               >
                 Login to check out
               </motion.button>
