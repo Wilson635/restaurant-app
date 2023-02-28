@@ -18,6 +18,23 @@ body {
   overflow-x: hidden;
 }
 
+::-webkit-scrollbar {
+  width: 5px
+}
+
+::-webkit-scrollbar-track {
+  background: #eef3f5
+}
+
+::-webkit-scrollbar-thumb {
+  background: #03a9f4;
+  border-radius: 4px
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #0055ff, #9696ff);
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
