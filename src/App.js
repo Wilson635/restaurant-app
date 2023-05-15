@@ -5,6 +5,12 @@ import { CreateContainer, Header, MainContainer } from "./components";
 import { useStateValue } from "./context/StateProvider";
 import { getAllFoodItems } from "./utils/firebaseFunctions";
 import { actionType } from "./context/reducer";
+import {ProfilePage} from "./components/ProfilePage";
+import {ServicesPage} from "./components/ServicesPage";
+import {MenuPage} from "./components/MenuPage";
+import {ContactPage} from "./components/ContactPage";
+import {AboutPage} from "./components/AboutPage";
+import "../src/libs/fontawesome-free-6.1.1-web/css/all.min.css";
 
 const App = () => {
   const [{ foodItems }, dispatch] = useStateValue();
@@ -31,6 +37,11 @@ const App = () => {
           <Routes>
             <Route path="/*" element={<MainContainer />} />
             <Route path="/createItem" element={<CreateContainer />} />
+            <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/service" element={<ServicesPage />} />
+            <Route path="/menu" element={<MenuPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/about" element={<AboutPage />} />
           </Routes>
         </main>
       </div>

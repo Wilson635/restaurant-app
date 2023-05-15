@@ -1,3 +1,5 @@
+/* eslint-disable eqeqeq */
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import { IoFastFood } from "react-icons/io5";
 import { categories } from "../utils/data";
