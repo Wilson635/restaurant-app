@@ -11,7 +11,7 @@ import CartContainer from "../CartContainer";
 
 export const MenuItems = () => {
 
-    const [filter, setFilter] = useState("");
+    const [filter, setFilter] = useState("chicken");
     const [{ foodItems, cartShow }, dispatch] = useStateValue();
 
 
