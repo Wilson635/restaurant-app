@@ -127,13 +127,6 @@ const CartContainer = () => {
                 >
                   Check Out
                 </motion.button>
-                <motion.button
-                    whileTap={{ scale: 0.8 }}
-                    type="button"
-                    className="w-full p-2 rounded-full bg-gradient-to-tr from-blue-400 to-blue-600 text-gray-50 text-lg mx-1 hover:shadow-lg"
-                >
-                  <Link to="/"> Continue Shopping </Link>
-                </motion.button>
               </div>
             ) : (
               <motion.button
