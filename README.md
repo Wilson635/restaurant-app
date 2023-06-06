@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+# Apllication de gestion des restaurants with React : Tailwind, Framer-motion, 
+
+![Copy of Fullstack Twitter Clone (8)](https://res.cloudinary.com/dqdq4c1c8/image/upload/v1686059767/restshop_zw2vrn.png)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
