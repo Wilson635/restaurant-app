@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import RowContainer from "../RowContainer";
 import { useStateValue } from "../../context/StateProvider";
 import CartContainer from "../CartContainer";
+import SlideFood from "./SlideFood";
 
 
 export const MenuItems = () => {
@@ -18,7 +19,10 @@ export const MenuItems = () => {
   return (
     <>
         <div className="w-full flex items-center justify-start lg:justify-center gap-8 py-6 overflow-x-scroll scrollbar-none">
-          {categories &&
+          <p className="text-2xl font-semibold capitalize text-headingColor relative before:absolute before:rounded-lg before:content before:w-16 before:h-1 before:-bottom-2 before:left-0 before:bg-gradient-to-tr from-blue-400 to-blue-600 transition-all ease-in-out duration-100 mr-auto">
+            Our fruits
+          </p>
+          {/* {categories &&
             categories.map((category) => (
               <motion.div
                 whileTap={{ scale: 0.75 }}
@@ -53,15 +57,43 @@ export const MenuItems = () => {
                   {category.name}
                 </p>
               </motion.div>
-            ))}
+            ))} */}
         </div>
 
         <div className="w-full">
           <RowContainer
             flag={false}
-            data={foodItems?.filter((n) => n.category == filter)}
+            // data={foodItems?.filter((n) => n.category == filter)}
+            data = {foodItems?.filter((n) => n.category == 'fruits' )}
           />
         </div>
+
+        <div className="w-full flex items-center justify-start lg:justify-center gap-8 py-6 overflow-x-scroll scrollbar-none">
+          <p className="text-2xl font-semibold capitalize text-headingColor relative before:absolute before:rounded-lg before:content before:w-16 before:h-1 before:-bottom-2 before:left-0 before:bg-gradient-to-tr from-blue-400 to-blue-600 transition-all ease-in-out duration-100 mr-auto">
+            Our icecreams
+          </p>
+        </div>
+        <div className="w-full">
+          <RowContainer
+            flag={false}
+            // data={foodItems?.filter((n) => n.category == filter)}
+            data = {foodItems?.filter((n) => n.category == 'icecreams' )}
+          />
+        </div>
+
+        <div className="w-full flex items-center justify-start lg:justify-center gap-8 py-6 overflow-x-scroll scrollbar-none">
+          <p className="text-2xl font-semibold capitalize text-headingColor relative before:absolute before:rounded-lg before:content before:w-16 before:h-1 before:-bottom-2 before:left-0 before:bg-gradient-to-tr from-blue-400 to-blue-600 transition-all ease-in-out duration-100 mr-auto">
+            Our fishes
+          </p>
+        </div>
+        <div className="w-full">
+          <RowContainer
+            flag={false}
+            // data={foodItems?.filter((n) => n.category == filter)}
+            data = {foodItems?.filter((n) => n.category == 'fish' )}
+          />
+        </div>
+        <SlideFood />
         {cartShow && <CartContainer />}
     </>
   )
