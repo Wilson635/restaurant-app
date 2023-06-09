@@ -7,8 +7,6 @@ import { motion } from "framer-motion";
 import RowContainer from "../RowContainer";
 import { useStateValue } from "../../context/StateProvider";
 import CartContainer from "../CartContainer";
-import SlideFood from "./SlideFood";
-
 
 export const MenuItems = () => {
 
@@ -93,7 +91,6 @@ export const MenuItems = () => {
             data = {foodItems?.filter((n) => n.category == 'fish' )}
           />
         </div>
-        <SlideFood />
         {cartShow && <CartContainer />}
     </>
   )
